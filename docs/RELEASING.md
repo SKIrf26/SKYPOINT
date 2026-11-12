@@ -9,7 +9,7 @@ For the maintainer. Do these in order.
 4. Android: `cd android && SKYPOINT_KS_PASS=... ./build.sh` with the project's signing key (never commit it). Install over the previous APK to confirm the key matches.
 5. `python3 tools/guide/make_guide.py` if screens or steps changed.
 6. `cd firmware && sha256sum *.bin *.apk > SHA256SUMS.txt`.
-7. Web installer: copy the new files into `web/firmware/` and `web/android/`, update the paths and `version` in both `web/manifest_*.json`, the APK link and size in `web/index.html`, and `web/firmware/SHA256SUMS.txt`. Zip `web/` as `SkyPoint_Web_Installer_Beta_N.zip` and upload it to your host.
+7. Web installer: copy the new files into `web/firmware/` and `web/android/`, update the paths and `version` in both `web/manifest_*.json`, the APK link and size in `web/index.html`, and `web/firmware/SHA256SUMS.txt`. Zip `web/` as `SkyPoint_Web_Installer_Beta_N.zip` and upload it to https://skirf-labs.tech/SKYPOINT/; check it loads over HTTPS and the Install buttons connect.
 8. Commit and push. On GitHub: **Releases › Draft a new release**.
    - Tag: `v0.1.0-beta.N`, target `main`
    - Title: `SkyPoint - Beta N`

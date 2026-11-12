@@ -16,10 +16,10 @@ Runs on the **LilyGO T-Watch Ultra** (standalone or from bmorcelli's Launcher), 
 ## New: SkyPoint for Android (1.0 Beta 1)
 The same sky on a phone, Android 8.0+. True north from the compass (no alignment needed), optional camera view, pinch zoom, Layers (stars, constellations, constellation drawings, planets, Sun and Moon, satellites, deep sky), an info sheet for every object with its Wikipedia summary, portrait / auto / landscape, and a GPS sky plot.
 
-Install `SkyPoint_1.0_Beta_1.apk` from the files below: open it on the phone and allow the install (Play Protect may ask: **More details › Install anyway**).
+Install `SkyPoint_1.0_Beta_1.apk` from the files below, or open the [web flasher](https://skirf-labs.tech/SKYPOINT/) on your phone and tap Download APK: open it on the phone and allow the install (Play Protect may ask: **More details › Install anyway**).
 
 ## Install
-The easiest way is the web installer (the `web/` folder of the repo, hosted on HTTPS) with Chrome or Edge on a computer. Or with esptool:
+The easiest way is the **[SkyPoint Web Flasher](https://skirf-labs.tech/SKYPOINT/)** with Chrome or Edge on a computer: plug in the watch and click Install. Or with esptool:
 
 ```
 # T-Watch Ultra, standalone (replaces Launcher)
@@ -41,7 +41,7 @@ esptool --chip esp32c6 write-flash 0x0 SkyPoint_WaveshareC6_AMOLED206_Beta_1.bin
 | `SkyPoint_1.0_Beta_1.apk` | Android app, Android 8.0+ |
 | `SHA256SUMS.txt` | Checksums |
 | `SkyPoint_Beta_1_User_Guide.pdf` (+ two booklet versions) | User guide |
-| `SkyPoint_Web_Installer_Beta_1.zip` | The web installer site, ready to upload to any HTTPS host |
+| `SkyPoint_Web_Installer_Beta_1.zip` | The web flasher site (live at https://skirf-labs.tech/SKYPOINT/), to host your own copy |
 
 ## Please know
 This is a **beta**.

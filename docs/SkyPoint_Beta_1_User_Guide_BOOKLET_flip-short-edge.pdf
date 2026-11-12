@@ -2182,7 +2182,7 @@ endobj
 endobj
 38 0 obj
 <<
-/Length 12984
+/Length 13050
 >>
 stream
 q
@@ -2982,7 +2982,7 @@ BT
 1 0 0 1 0 3 Tm
 /F2+0 8.2 Tf
 11.2 TL
-(SkyPoint \001 github\056com\057SKIrf26\057SKYPOINT \001 SKIrf Labs) Tj
+(SkyPoint \001 Web flasher\072 skirf\055labs\056tech\057SKYPOINT \001 Source\072 github\056com\057SKIrf26\057SKYPOINT \001 SKIrf Labs) Tj
 T*
 ET
 Q
@@ -4666,7 +4666,7 @@ endobj
 endobj
 42 0 obj
 <<
-/Length 15916
+/Length 16065
 >>
 stream
 q
@@ -4966,7 +4966,7 @@ BT
 1 0 0 1 0 2.7 Tm
 /F2+0 8.2 Tf
 10.9 TL
-(The web installer) Tj
+(The web flasher) Tj
 T*
 ET
 Q
@@ -5191,15 +5191,13 @@ BT
 13.6 TL
 ( \050keeps your other apps\051\072 download) Tj
 T*
--0.134561 Tw
 /F4+0 9.4 Tf
 13.6 TL
 (SkyPoint\137TWatchUltra\137Beta\1371\137Launcher\056bin) Tj
 /F2+0 9.4 Tf
 13.6 TL
-( from the Releases page or the web installer\054 copy it) Tj
+( from the web flasher or the Releases page\054 copy it) Tj
 T*
-0 Tw
 -0.099673 Tw
 (to the watch\047s microSD card\054 then install and start it from Launcher\056 SETUP \002 ) Tj
 /F4+0 9.4 Tf
@@ -5227,17 +5225,22 @@ BT
 (Standalone) Tj
 /F2+0 9.4 Tf
 13.6 TL
-( \050replaces whatever is on the watch\051\072 open the SkyPoint web installer in Chrome or) Tj
+( \050replaces whatever is on the watch\051\072 open the SkyPoint web flasher at) Tj
 T*
-(Edge\054 plug in the watch\054 pick ) Tj
 /F4+0 9.4 Tf
 13.6 TL
-(LilyGO T\055Watch Ultra \001 Install standalone) Tj
+(skirf\055labs\056tech\057SKYPOINT) Tj
 /F2+0 9.4 Tf
 13.6 TL
-( and follow the prompts\056) Tj
+( in Chrome or Edge\054 plug in the watch\054 pick ) Tj
+/F4+0 9.4 Tf
+13.6 TL
+(LilyGO T\055Watch Ultra \001) Tj
 T*
-(Or use esptool\072) Tj
+(Install standalone) Tj
+/F2+0 9.4 Tf
+13.6 TL
+( and follow the prompts\056 Or use esptool\072) Tj
 T*
 ET
 Q
@@ -5344,21 +5347,26 @@ BT
 0.078431 0.105882 0.14902 rg
 /F2+0 9.4 Tf
 13.6 TL
-(In the web installer choose ) Tj
+(In the web flasher \050) Tj
+/F4+0 9.4 Tf
+13.6 TL
+(skirf\055labs\056tech\057SKYPOINT) Tj
+/F2+0 9.4 Tf
+13.6 TL
+(\051 choose ) Tj
 /F4+0 9.4 Tf
 13.6 TL
 (Waveshare C6 AMOLED 2\05606 \001 Install) Tj
+T*
 /F2+0 9.4 Tf
 13.6 TL
-( and tick ) Tj
+(and tick ) Tj
 /F4+0 9.4 Tf
 13.6 TL
 (Erase device) Tj
 /F2+0 9.4 Tf
 13.6 TL
-( the first) Tj
-T*
-(time\056 Or with esptool\072) Tj
+( the first time\056 Or with esptool\072) Tj
 T*
 ET
 Q
@@ -6102,7 +6110,7 @@ endobj
 endobj
 44 0 obj
 <<
-/Length 11966
+/Length 12040
 >>
 stream
 q
@@ -6772,23 +6780,29 @@ ET
 Q
 Q
 q
-1 0 0 1 67.2 615.5 cm
+1 0 0 1 67.2 601.9 cm
 q
 BT
-1 0 0 1 1 4.2 Tm
+1 0 0 1 1 17.8 Tm
 /F1 10 Tf
 12 TL
 0.078431 0.105882 0.14902 rg
 (1\056) Tj
 ET
 BT
-1 0 0 1 15 4.2 Tm
+1 0 0 1 15 17.8 Tm
 0.34 0 Td
 13.6 TL
 0.078431 0.105882 0.14902 rg
 /F2+0 9.4 Tf
 13.6 TL
-(Open the web installer \050or the Releases page\051 ) Tj
+(Open ) Tj
+/F4+0 9.4 Tf
+13.6 TL
+(skirf\055labs\056tech\057SKYPOINT) Tj
+/F2+0 9.4 Tf
+13.6 TL
+( \050or the Releases page\051 ) Tj
 /F4+0 9.4 Tf
 13.6 TL
 (on your phone) Tj
@@ -6797,17 +6811,19 @@ BT
 ( and tap ) Tj
 /F4+0 9.4 Tf
 13.6 TL
-(Download APK) Tj
+(Download) Tj
+T*
+-0.34 0 Td
+(APK) Tj
 /F2+0 9.4 Tf
 13.6 TL
 (\056) Tj
 T*
--0.34 0 Td
 ET
 Q
 Q
 q
-1 0 0 1 67.2 585.3 cm
+1 0 0 1 67.2 571.7 cm
 q
 BT
 1 0 0 1 1 17.8 Tm
@@ -6838,7 +6854,7 @@ ET
 Q
 Q
 q
-1 0 0 1 67.2 568.7 cm
+1 0 0 1 67.2 555.1 cm
 q
 BT
 1 0 0 1 1 4.2 Tm
@@ -6867,7 +6883,7 @@ ET
 Q
 Q
 q
-1 0 0 1 67.2 552.1 cm
+1 0 0 1 67.2 538.5 cm
 q
 BT
 1 0 0 1 1 4.2 Tm
@@ -6902,7 +6918,7 @@ ET
 Q
 Q
 q
-1 0 0 1 67.2 525.1 cm
+1 0 0 1 67.2 511.5 cm
 q
 0.043137 0.478431 0.541176 rg
 BT
@@ -6915,7 +6931,7 @@ ET
 Q
 Q
 q
-1 0 0 1 67.2 480.3 cm
+1 0 0 1 67.2 466.7 cm
 q
 BT
 1 0 0 1 1 31.4 Tm
@@ -6957,7 +6973,7 @@ ET
 Q
 Q
 q
-1 0 0 1 67.2 450.1 cm
+1 0 0 1 67.2 436.5 cm
 q
 BT
 1 0 0 1 1 17.8 Tm
@@ -6985,7 +7001,7 @@ ET
 Q
 Q
 q
-1 0 0 1 67.2 419.9 cm
+1 0 0 1 67.2 406.3 cm
 q
 BT
 1 0 0 1 1 17.8 Tm
@@ -7013,7 +7029,7 @@ ET
 Q
 Q
 q
-1 0 0 1 67.2 403.3 cm
+1 0 0 1 67.2 389.7 cm
 q
 BT
 1 0 0 1 1 4.2 Tm
@@ -7039,10 +7055,10 @@ ET
 Q
 Q
 q
-1 0 0 1 67.2 396.3 cm
+1 0 0 1 67.2 382.7 cm
 Q
 q
-1 0 0 1 64.8 343.6 cm
+1 0 0 1 64.8 330 cm
 q
 0.984314 0.941176 0.921569 rg
 n
@@ -7097,10 +7113,10 @@ Q
 Q
 Q
 q
-1 0 0 1 67.2 335.6 cm
+1 0 0 1 67.2 322 cm
 Q
 q
-1 0 0 1 67.2 335.6 cm
+1 0 0 1 67.2 322 cm
 Q
 Q
 
@@ -12298,33 +12314,33 @@ xref
 0000584042 00000 n 
 0000623628 00000 n 
 0000623902 00000 n 
-0000636940 00000 n 
-0000637214 00000 n 
-0000655333 00000 n 
-0000655607 00000 n 
-0000671577 00000 n 
-0000671851 00000 n 
-0000683871 00000 n 
-0000684209 00000 n 
-0000762877 00000 n 
-0000770361 00000 n 
-0000770698 00000 n 
-0000783325 00000 n 
-0000783760 00000 n 
-0000876101 00000 n 
-0000899353 00000 n 
-0000909350 00000 n 
-0000909981 00000 n 
-0001021379 00000 n 
-0001043533 00000 n 
-0001060358 00000 n 
-0001130715 00000 n 
-0001231526 00000 n 
-0001242806 00000 n 
-0001243242 00000 n 
-0001259905 00000 n 
-0001277096 00000 n 
-0001291824 00000 n 
+0000637006 00000 n 
+0000637280 00000 n 
+0000655399 00000 n 
+0000655673 00000 n 
+0000671792 00000 n 
+0000672066 00000 n 
+0000684160 00000 n 
+0000684498 00000 n 
+0000763166 00000 n 
+0000770650 00000 n 
+0000770987 00000 n 
+0000783614 00000 n 
+0000784049 00000 n 
+0000876390 00000 n 
+0000899642 00000 n 
+0000909639 00000 n 
+0000910270 00000 n 
+0001021668 00000 n 
+0001043822 00000 n 
+0001060647 00000 n 
+0001131004 00000 n 
+0001231815 00000 n 
+0001243095 00000 n 
+0001243531 00000 n 
+0001260194 00000 n 
+0001277385 00000 n 
+0001292113 00000 n 
 trailer
 <<
 /Size 66
@@ -12332,5 +12348,5 @@ trailer
 /Info 1 0 R
 >>
 startxref
-1305877
+1306166
 %%EOF

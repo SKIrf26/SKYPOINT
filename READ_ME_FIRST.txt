@@ -13,8 +13,10 @@ Runs on:
 THE FASTEST WAY TO START
 ------------------------
   1. Install it
-       Watch:   the web installer (web/ folder, Chrome or Edge), or esptool with the .bin in firmware/
-       Phone:   SkyPoint_1.0_Beta_1.apk (Play Protect may ask: More details > Install anyway)
+       Watch:   the web flasher, https://skirf-labs.tech/SKYPOINT/ (Chrome or Edge on a computer),
+                or esptool with the .bin in firmware/
+       Phone:   open https://skirf-labs.tech/SKYPOINT/ on the phone and tap Download APK
+                (Play Protect may ask: More details > Install anyway)
   2. Time and place
        T-Watch: go outside, open the GPS page, wait for LOCKED
        C6:      SETUP > Wi-Fi, then Sync over Wi-Fi (or pick a city)
@@ -35,7 +37,7 @@ WHAT IS IN THIS FOLDER
   RELEASE_NOTES.md      what's in Beta 1
   CHANGELOG.md          history
   firmware/             ready-made images and the Android app, with SHA256SUMS.txt
-  web/                  the web installer site
+  web/                  the web flasher site (live at https://skirf-labs.tech/SKYPOINT/)
   docs/                 user guide (normal and booklet PDFs), screenshots, logo
   SkyPoint/             watch firmware source (Arduino)
   android/              Android app source

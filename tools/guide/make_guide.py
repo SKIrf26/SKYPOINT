@@ -235,7 +235,7 @@ s.append(table([
     ["Item", "Why", "Notes"],
     ["One of the supported devices", "Runs SkyPoint", "LilyGO T-Watch Ultra, Waveshare ESP32-C6-Touch-AMOLED-2.06, or an Android 8.0+ phone"],
     ["USB-C data cable", "Installing on a watch", "Some cables only charge. If the computer doesn't see the watch, try another cable."],
-    ["A computer with Chrome or Edge", "The web installer", "Windows, macOS, Linux or ChromeOS. Firefox and Safari can't flash."],
+    ["A computer with Chrome or Edge", "The web flasher", "Windows, macOS, Linux or ChromeOS. Firefox and Safari can't flash."],
     ["Wi-Fi network", "Fresh satellite orbits; time and place on the C6", "2.4 GHz network. Optional on the T-Watch."],
     ["A clear view of the sky", "GPS fix (T-Watch), and the fun part", "The T-Watch's first GPS fix outdoors takes 1 to 5 minutes."],
     ["microSD card", "Optional on the T-Watch", "For a Wi-Fi file or your own orbit file (section 10)."],
@@ -245,23 +245,23 @@ s.append(table([
 s += chapter("3. Quick start")
 s.append(P("3.1 Install on the T-Watch Ultra", h2))
 s.append(P("<b>With Launcher</b> (keeps your other apps): download <b>SkyPoint_TWatchUltra_Beta_1_Launcher.bin</b> "
-           "from the Releases page or the web installer, copy it to the watch's microSD card, then install and start "
+           "from the web flasher or the Releases page, copy it to the watch's microSD card, then install and start "
            "it from Launcher. SETUP › <b>Exit to Launcher</b> takes you back."))
-s.append(P("<b>Standalone</b> (replaces whatever is on the watch): open the SkyPoint web installer in Chrome or "
+s.append(P("<b>Standalone</b> (replaces whatever is on the watch): open the SkyPoint web flasher at <b>skirf-labs.tech/SKYPOINT</b> in Chrome or "
            "Edge, plug in the watch, pick <b>LilyGO T-Watch Ultra › Install standalone</b> and follow the prompts. "
            "Or use esptool:"))
 s.append(P("esptool --chip esp32s3 write-flash 0x0 SkyPoint_TWatchUltra_Beta_1.bin", code))
 s.append(box("IMPORTANT", "Launcher users",
              "The standalone image replaces Launcher. If you use Launcher, install the Launcher .bin from the SD card instead."))
 s.append(P("3.2 Install on the Waveshare C6 AMOLED 2.06", h2))
-s.append(P("In the web installer choose <b>Waveshare C6 AMOLED 2.06 › Install</b> and tick <b>Erase device</b> "
+s.append(P("In the web flasher (<b>skirf-labs.tech/SKYPOINT</b>) choose <b>Waveshare C6 AMOLED 2.06 › Install</b> and tick <b>Erase device</b> "
            "the first time. Or with esptool:"))
 s.append(P("esptool --chip esp32c6 erase-flash<br/>esptool --chip esp32c6 write-flash 0x0 SkyPoint_WaveshareC6_AMOLED206_Beta_1.bin", code))
 s.append(box("TIP", "If the computer can't connect",
              "Hold the board's BOOT button while you plug in the cable, then let go and try again. The C6 image is "
              "built for the board's 4 MB flash; an image built for 16 MB boots to a black screen."))
 s.append(P("3.3 Install on Android", h2))
-s += N(["Open the web installer (or the Releases page) <b>on your phone</b> and tap <b>Download APK</b>.",
+s += N(["Open <b>skirf-labs.tech/SKYPOINT</b> (or the Releases page) <b>on your phone</b> and tap <b>Download APK</b>.",
         "Open the downloaded <b>SkyPoint_1.0_Beta_1.apk</b>. If asked, allow your browser to install unknown apps.",
         "If Play Protect says it doesn't recognise the app, tap <b>More details › Install anyway</b>.",
         "Open SkyPoint and allow <b>location</b>. Allow the <b>camera</b> later only if you want the camera view."])
@@ -601,7 +601,7 @@ s += B(["Stars: HYG Database v4.1 (astronexus), CC BY-SA 4.0",
 s.append(P("The full notices are in THIRD_PARTY_NOTICES.md and the licenses folder of the source code. "
            "Wikipedia text shown in the Android app is CC BY-SA 4.0.", small))
 s.append(Spacer(1, 14))
-s.append(P("SkyPoint  ·  github.com/SKIrf26/SKYPOINT  ·  SKIrf Labs", small))
+s.append(P("SkyPoint  ·  Web flasher: skirf-labs.tech/SKYPOINT  ·  Source: github.com/SKIrf26/SKYPOINT  ·  SKIrf Labs", small))
 
 
 def build(out):

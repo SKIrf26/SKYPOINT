@@ -16,7 +16,7 @@ The SkyPoint sky on a phone. Hold it up like a window (back camera towards the s
 
 ## Install
 
-Download `SkyPoint_1.0_Beta_1.apk` from the flasher page on the phone, open it, allow "install unknown apps" for the browser, and if Play Protect complains tap **More details › Install anyway**. Allow location (and camera if you want AR).
+Download `SkyPoint_1.0_Beta_1.apk` from the [SkyPoint Web Flasher](https://skirf-labs.tech/SKYPOINT/) on the phone, open it, allow "install unknown apps" for the browser, and if Play Protect complains tap **More details › Install anyway**. Allow location (and camera if you want AR).
 
 ## How it's built
 

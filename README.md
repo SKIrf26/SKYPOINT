@@ -17,7 +17,7 @@
 
 SkyPoint is a pocket planetarium you point at the sky. It runs on the **LilyGO T-Watch Ultra**, the **Waveshare ESP32-C6-Touch-AMOLED-2.06** and **Android** phones. Everything is calculated on the device: 1,675 stars, the constellations, the Sun, Moon and planets, 109 Messier objects, and the ISS, Tiangong and Hubble with their passes over you.
 
-**Get it:** [Releases](https://github.com/SKIrf26/SKYPOINT/releases) · **Guide:** [User guide (PDF)](docs/SkyPoint_Beta_1_User_Guide.pdf) · booklets to print two-sided: [flip on short edge](docs/SkyPoint_Beta_1_User_Guide_BOOKLET_flip-short-edge.pdf) / [flip on long edge](docs/SkyPoint_Beta_1_User_Guide_BOOKLET_flip-long-edge.pdf)
+**Get it:** [Web flasher](https://skirf-labs.tech/SKYPOINT/) · [Releases](https://github.com/SKIrf26/SKYPOINT/releases) · **Guide:** [User guide (PDF)](docs/SkyPoint_Beta_1_User_Guide.pdf) · booklets to print two-sided: [flip on short edge](docs/SkyPoint_Beta_1_User_Guide_BOOKLET_flip-short-edge.pdf) / [flip on long edge](docs/SkyPoint_Beta_1_User_Guide_BOOKLET_flip-long-edge.pdf)
 
 ## What it does
 
@@ -88,11 +88,11 @@ Neither watch board has a magnetometer, so the watch knows exactly which way is 
 
 The same sky on a phone (Android 8.0+), no watch needed. The phone's compass gives **true north** straight away (corrected for magnetic declination), with an optional **camera view**, pinch zoom, **layers** (stars, constellations, drawings, planets, Sun and Moon, satellites, deep sky), an **info sheet** for every object with its Wikipedia summary, portrait / auto / landscape rotation, and a GPS sky plot. Details in [`android/README.md`](android/README.md).
 
-Install `SkyPoint_1.0_Beta_1.apk` from [Releases](https://github.com/SKIrf26/SKYPOINT/releases): open it on the phone and allow the install (Play Protect may ask: **More details › Install anyway**).
+Install `SkyPoint_1.0_Beta_1.apk` from the [web flasher](https://skirf-labs.tech/SKYPOINT/) (open it on the phone) or [Releases](https://github.com/SKIrf26/SKYPOINT/releases): open it on the phone and allow the install (Play Protect may ask: **More details › Install anyway**).
 
 ## Install
 
-The easiest way is the **web installer** in [`web/`](web/) (host it on any HTTPS site, or open it from GitHub Pages): plug in the watch, click Install, done. It needs Chrome or Edge on a computer.
+The easiest way is the **[SkyPoint Web Flasher](https://skirf-labs.tech/SKYPOINT/)**: plug in the watch, click Install, done. It needs Chrome or Edge on a computer. Open the same page on your phone to download the Android app. (The site's source is in [`web/`](web/) if you want to host your own copy.)
 
 | File (from Releases) | For | How |
 |---|---|---|

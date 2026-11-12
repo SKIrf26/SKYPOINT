@@ -3,7 +3,7 @@ SkyPoint web flasher
 
 UPLOAD
   Upload this whole folder (keep the structure) to your webspace, e.g.
-    https://skirf-labs.tech/skypoint_flasher/index.html
+    https://skirf-labs.tech/SKYPOINT/   (the live copy)
   It is all static files: no server code, no build step.
 
   Flashing needs HTTPS (browsers only allow Web Serial on secure pages).
