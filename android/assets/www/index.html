@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<title>SkyPoint</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<video id="cam" playsinline muted autoplay></video>
+<canvas id="sky"></canvas>
+
+<section id="page-tonight" class="page" hidden><div class="col" id="tonight"></div></section>
+<section id="page-orbit" class="page" hidden><div class="col" id="orbit"></div></section>
+<section id="page-gps" class="page" hidden><div class="col" id="gps"></div></section>
+<section id="page-setup" class="page" hidden><div class="col" id="setup"></div></section>
+
+<button id="layersBtn" aria-label="Layers"><svg viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 12.5l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg><i></i></button>
+
+<nav id="tabs" aria-label="Pages">
+  <button data-page="sky" class="on" aria-label="Sky"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="6.5"/><path d="M12 2.5v4M12 17.5v4M2.5 12h4M17.5 12h4"/><circle cx="12" cy="12" r=".6" fill="currentColor"/></svg><span>Sky</span></button>
+  <button data-page="tonight" aria-label="Tonight"><svg viewBox="0 0 24 24"><path d="M19.5 14.6A7.8 7.8 0 0 1 9.4 4.5a7.8 7.8 0 1 0 10.1 10.1z"/></svg><span>Tonight</span></button>
+  <button data-page="orbit" aria-label="Orbit"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(-25 12 12)"/><circle cx="12" cy="12" r="2.4"/></svg><span>Orbit</span></button>
+  <button data-page="gps" aria-label="Location"><svg viewBox="0 0 24 24"><path d="M12 21.5s6.8-6.9 6.8-11.6a6.8 6.8 0 0 0-13.6 0c0 4.7 6.8 11.6 6.8 11.6z"/><circle cx="12" cy="9.8" r="2.4"/></svg><span>Location</span></button>
+  <button data-page="setup" aria-label="Settings"><svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg><span>Settings</span></button>
+</nav>
+
+<div id="toast" role="status"></div>
+<div id="scrim"></div>
+<div id="sheet" role="dialog" aria-modal="true"></div>
+<div id="alignBar" hidden></div>
+
+<div id="intro"><canvas id="introCanvas"></canvas><div class="introTitle">SKYPOINT</div><div class="introTag">Point at the sky. See what's there.</div></div>
+
+<script src="lib/catalog.js"></script>
+<script src="lib/astronomy.min.js"></script>
+<script src="lib/satellite.min.js"></script>
+<script src="lib/art.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

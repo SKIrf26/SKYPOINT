@@ -1,0 +1,11 @@
+build/
+tools/simulator/build/
+tools/simulator/shots/
+test/astro_test
+test/sats_test
+test/sats_out.txt
+SkyPoint/build/
+android/build/
+android/tools/android.jar
+android/tools/*.jks
+android/tools/aapt2

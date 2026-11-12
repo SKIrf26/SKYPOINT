@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="130 -70 640 690" width="640" height="690"><defs>
+  <linearGradient id="word" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5cf2ff"/><stop offset="1" stop-color="#9d7bff"/></linearGradient>
+  <linearGradient id="skw" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5cf2ff"/><stop offset="1" stop-color="#9d7bff"/></linearGradient>
+  <linearGradient id="barL" x1="0" x2="1"><stop offset="0" stop-color="#9d7bff"/><stop offset="1" stop-color="#5cf2ff"/></linearGradient>
+  <linearGradient id="barR" x1="0" x2="1"><stop offset="0" stop-color="#5cf2ff"/><stop offset="1" stop-color="#9d7bff"/></linearGradient>
+  <linearGradient id="beam" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#5cf2ff"/><stop offset="1" stop-color="#5cf2ff" stop-opacity=".25"/></linearGradient>
+  <!-- die-cut sticker: round dilation of the artwork's silhouette, black then a thin white rim -->
+  <filter id="sticker" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="22" result="d"/>
+    <feGaussianBlur in="d" stdDeviation="9" result="b"/>
+    <feComponentTransfer in="b" result="black"><feFuncA type="linear" slope="20" intercept="-9.5"/></feComponentTransfer>
+    <feMorphology in="black" operator="dilate" radius="5" result="white"/>
+    <feFlood flood-color="#05070d"/><feComposite in2="black" operator="in" result="blackFill"/>
+    <feFlood flood-color="#ffffff"/><feComposite in2="white" operator="in" result="whiteFill"/>
+    <feMerge><feMergeNode in="whiteFill"/><feMergeNode in="blackFill"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs><g filter="url(#sticker)"><polygon fill="#05070d" points="411,-8.709800000000001 463,-8.709800000000001 463,43.2902 447,217.2902 427,217.2902 411,43.2902"/><path d="M430.0 215.3 L433.0 135.3 H441.0 L444.0 215.3Z" fill="#ffffff"/><rect x="426.0" y="129.3" width="22" height="9" rx="2" fill="#ffffff"/><circle cx="437.0" cy="121.3" r="6" fill="#5cf2ff"/><path d="M409.1 115.8 A34 34 0 0 1 464.9 115.8" fill="none" stroke="#5cf2ff" stroke-width="10" stroke-linecap="square"/><path d="M387.9 100.9 A60 60 0 0 1 486.1 100.9" fill="none" stroke="#5cf2ff" stroke-width="10" stroke-linecap="square"/><path d="M366.6 86.0 A86 86 0 0 1 507.4 86.0" fill="none" stroke="#5cf2ff" stroke-width="10" stroke-linecap="square"/><g transform="translate(437.0 17.3)"><path d="M0 -15 L4 -4 L15 0 L4 4 L0 15 L-4 4 L-15 0 L-4 -4Z" fill="#ffffff"/><path d="M-24 -14v-10h10M24 -14v-10h-10M-24 14v10h10M24 14v10h-10" fill="none" stroke="#9d7bff" stroke-width="5" stroke-linecap="square"/></g>
+<polygon points="255,210 405,135 620,225 470,300" fill="#121a33"/>
+<polygon points="255,210 470,300 470,520 255,430" fill="#0b1124"/>
+<polygon points="470,300 620,225 620,445 470,520" fill="#070b18"/>
+
+<g transform="matrix(1,0.4186,1,-0.5,255,210)">
+  <path d="M60 40h-16v70h16M155 40h16v70h-16" fill="none" stroke="#5cf2ff" stroke-width="7" stroke-linecap="square"/>
+  <ellipse cx="107" cy="75" rx="26" ry="26" fill="#040817" stroke="#ffffff" stroke-width="5"/>
+  <ellipse cx="107" cy="75" rx="11" ry="11" fill="#5cf2ff"/>
+</g>
+<g transform="matrix(1,0.4186,0,1,255,210)">
+  <rect x="16" y="16" width="183" height="170" rx="12" fill="#040817" stroke="#ffffff" stroke-width="5"/>
+  <g fill="none" stroke="#ffffff" stroke-width="5"><circle cx="107" cy="101" r="62"/></g>
+  <g fill="none" stroke="#5cf2ff" stroke-width="3"><circle cx="107" cy="101" r="40" opacity=".8"/><circle cx="107" cy="101" r="18" opacity=".6"/></g>
+  <path d="M107 30v142M36 101h142" stroke="#5cf2ff" stroke-width="2.5" opacity=".55"/>
+  <path d="M107 33v20M107 149v20M39 101h20M155 101h20" stroke="#ffffff" stroke-width="6" stroke-linecap="square"/>
+  <g fill="#ffffff"><circle cx="76" cy="74" r="4"/><circle cx="141" cy="128" r="3.5"/><circle cx="84" cy="136" r="3"/><circle cx="148" cy="66" r="3"/></g>
+  <circle cx="128" cy="82" r="7" fill="#5cf2ff"/>
+  <path d="M117 71h-5v5M139 71h5v5M117 93h-5v-5M139 93h5v-5" fill="none" stroke="#5cf2ff" stroke-width="3" stroke-linecap="square"/>
+  <rect x="30" y="198" width="60" height="8" rx="2" fill="#33405e"/><rect x="98" y="198" width="22" height="8" rx="2" fill="#5cf2ff"/><rect x="126" y="198" width="12" height="8" rx="2" fill="#33405e"/>
+</g>
+<g transform="matrix(1,-0.5,0,1,470,300)">
+  <g fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="32" y="38" width="12" height="12" rx="1.5"/><path d="M18 44h10M48 44h10M38 38v-6"/>
+    <path d="M38 98 C28 86 28 76 38 72 C48 76 48 86 38 98Z"/>
+    <circle cx="38" cy="132" r="13"/><path d="M38 121l5 11-5 11-5-11z" fill="#ffffff" stroke-width="1.5"/>
+  </g>
+  <circle cx="38" cy="82" r="3.5" fill="#ffffff"/>
+  <g fill="#ffffff"><rect x="26" y="184" width="5" height="8" rx="1"/><rect x="34" y="178" width="5" height="14" rx="1"/><rect x="42" y="172" width="5" height="20" rx="1"/></g>
+  <rect x="50" y="166" width="5" height="26" rx="1" fill="#5cf2ff"/>
+  <g fill="#33405e"><rect x="78" y="24" width="48" height="10" rx="2"/><rect x="78" y="44" width="48" height="10" rx="2"/><rect x="78" y="64" width="48" height="10" rx="2"/><rect x="78" y="84" width="48" height="10" rx="2"/><rect x="78" y="104" width="48" height="10" rx="2"/><rect x="78" y="124" width="48" height="10" rx="2"/><rect x="78" y="144" width="48" height="10" rx="2"/><rect x="78" y="164" width="48" height="10" rx="2"/><rect x="78" y="184" width="48" height="10" rx="2"/></g>
+  <rect x="78" y="24" width="48" height="10" rx="2" fill="#5cf2ff"/><rect x="78" y="44" width="30" height="10" rx="2" fill="#5cf2ff" opacity=".6"/>
+</g>
+<g fill="none" stroke="#ffffff" stroke-width="8" stroke-linejoin="round" stroke-linecap="round">
+  <polygon points="255,210 405,135 620,225 620,445 470,520 255,430"/>
+  <polyline points="255,210 470,300 620,225"/><polyline points="470,300 470,520"/>
+</g></g></svg>

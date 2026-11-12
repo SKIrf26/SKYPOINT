@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="icon_bg">#000000</color>
+    <string name="app_name">SkyPoint</string>
+    <style name="AppTheme" parent="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen">
+        <item name="android:windowBackground">@color/icon_bg</item>
+        <item name="android:statusBarColor">@color/icon_bg</item>
+        <item name="android:navigationBarColor">@color/icon_bg</item>
+        <item name="android:colorAccent">#5CF2FF</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+    </style>
+</resources>

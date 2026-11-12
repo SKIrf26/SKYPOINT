@@ -1,0 +1,19 @@
+* text=auto
+*.ino text eol=lf
+*.h text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.sh text eol=lf
+*.pdf binary
+*.png binary
+*.bin binary
+*.cpp text eol=lf
+*.js text eol=lf
+*.java text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.apk binary
+*.webp binary
+*.woff2 binary
+*.ttf binary

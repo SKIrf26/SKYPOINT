@@ -1,0 +1,60 @@
+name: Bug report
+description: Something does not work as the guide says
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for testing. Please fill in as much as you can.
+  - type: dropdown
+    id: device
+    attributes:
+      label: Device
+      options:
+        - LilyGO T-Watch Ultra (standalone)
+        - LilyGO T-Watch Ultra (Launcher app)
+        - Waveshare ESP32-C6-Touch-AMOLED-2.06
+        - Android phone
+    validations:
+      required: true
+  - type: input
+    id: release
+    attributes:
+      label: Release
+      description: The release you installed (Android shows it in Settings).
+      placeholder: Beta 1
+    validations:
+      required: true
+  - type: dropdown
+    id: how
+    attributes:
+      label: How did you install it?
+      options:
+        - Web installer
+        - Flashed the release .bin with esptool
+        - Launcher, from the SD card
+        - Installed the APK
+        - Built from source
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Where and when (for anything about positions or passes)
+      description: Rough location (a city is enough), date and time with time zone.
+      placeholder: Chicago, 11 Nov 2026 21:30 CST
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+  - type: textarea
+    id: log
+    attributes:
+      label: Serial Monitor output (115200 baud) or phone details
+      render: text

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SkyPoint Web Flasher</title>
+<meta name="description" content="Flash SkyPoint to the LilyGO T-Watch Ultra or the Waveshare ESP32-C6-Touch-AMOLED-2.06 from your browser.">
+<script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+<style>
+  @font-face { font-family: 'Orbitron'; src: url(fonts/Orbitron.woff2) format('woff2'); font-weight: 400 900; font-display: swap; }
+  @font-face { font-family: 'Rajdhani'; src: url(fonts/Rajdhani-Medium.woff2) format('woff2'); font-weight: 500; font-display: swap; }
+  @font-face { font-family: 'Rajdhani'; src: url(fonts/Rajdhani-SemiBold.woff2) format('woff2'); font-weight: 600; font-display: swap; }
+  @font-face { font-family: 'Rajdhani'; src: url(fonts/Rajdhani-Bold.woff2) format('woff2'); font-weight: 700; font-display: swap; }
+  @font-face { font-family: 'Share Tech Mono'; src: url(fonts/ShareTechMono-Regular.woff2) format('woff2'); font-display: swap; }
+  /* until ESP Web Tools has loaded, only the install button shows */
+  esp-web-install-button:not(:defined) [slot="unsupported"],
+  esp-web-install-button:not(:defined) [slot="not-allowed"] { display: none; }
+  :root {
+    --bg: #000;
+    --card: #06141b;
+    --card2: #0a1d26;
+    --hud: #5cf2ff;
+    --hud-dim: #1c6e78;
+    --amber: #ff9f43;
+    --magenta: #ff4f7b;
+    --ok: #3dffa2;
+    --warn: #ffc247;
+    --text: #eaf6ff;
+    --dim: #7f95a6;
+    --sat: #34f5c5;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--text); }
+  body { font-family: 'Rajdhani', system-ui, sans-serif; font-size: 18px; line-height: 1.45; }
+  #stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+  main { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; padding: 0 22px 60px; }
+  a { color: var(--hud); }
+  .mono { font-family: 'Share Tech Mono', ui-monospace, monospace; letter-spacing: .06em; }
+
+  header { text-align: center; padding: 40px 0 20px; }
+  h1.logo { margin: 0 auto 6px; line-height: 0; } h1.logo img { max-width: 80vw; height: auto; filter: drop-shadow(0 10px 30px rgba(0,0,0,.6)); }
+  .reticle { width: 92px; height: 92px; margin: 0 auto 18px; position: relative; }
+  .reticle::before { content: ''; position: absolute; inset: 0; border-radius: 50%;
+    border: 3px solid var(--hud); border-left-color: transparent; border-right-color: transparent; animation: spin 6s linear infinite; }
+  .reticle::after { content: ''; position: absolute; inset: 36px; border-radius: 50%; background: var(--hud); box-shadow: 0 0 22px var(--hud); }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  h1 { font-family: 'Orbitron', sans-serif; font-weight: 700; letter-spacing: .32em; margin: 0; font-size: clamp(34px, 7vw, 64px);
+       text-shadow: 0 0 24px rgba(92,242,255,.35); padding-left: .32em; }
+  .tag { color: var(--hud); margin-top: 8px; font-size: 14px; }
+  .lede { max-width: 720px; margin: 22px auto 0; color: var(--dim); font-size: 20px; }
+  .ver { display: inline-block; margin-top: 18px; padding: 4px 14px; border: 1px solid var(--amber); color: var(--amber); border-radius: 20px; font-size: 13px; }
+
+  .shots { display: flex; gap: 16px; overflow-x: auto; padding: 26px 4px 14px; scroll-snap-type: x mandatory; }
+  .shots img { height: 300px; flex: none; border-radius: 34px; scroll-snap-align: center; box-shadow: 0 0 0 1px #12323c, 0 14px 40px rgba(0,0,0,.6); background: #000; }
+
+  h2 { font-family: 'Orbitron', sans-serif; font-weight: 500; letter-spacing: .22em; font-size: 22px; color: var(--hud); margin: 54px 0 18px; }
+  h2 small { display: block; font-family: 'Share Tech Mono', monospace; letter-spacing: .1em; color: var(--dim); font-size: 13px; margin-top: 6px; }
+
+  .boards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .board { background: linear-gradient(180deg, var(--card2), var(--card)); border: 1px solid #12323c; border-radius: 22px; padding: 24px 24px 22px; position: relative; overflow: hidden; }
+  .board::before { content: ''; position: absolute; left: 0; top: 22px; bottom: 22px; width: 4px; border-radius: 3px; background: var(--accent, var(--hud)); }
+  .board h3 { margin: 0 0 2px; font-size: 26px; font-weight: 700; }
+  .board .chip { color: var(--accent, var(--hud)); font-size: 13px; }
+  .board ul { padding-left: 18px; margin: 14px 0 18px; color: var(--dim); }
+  .board li { margin: 3px 0; }
+  .board li b { color: var(--text); font-weight: 600; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  esp-web-install-button button[slot="activate"], .btn {
+    font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 18px; letter-spacing: .08em;
+    border-radius: 26px; padding: 12px 26px; cursor: pointer; text-decoration: none; display: inline-block;
+    border: 1px solid var(--accent, var(--hud)); color: #00141a; background: var(--accent, var(--hud));
+    box-shadow: 0 0 22px rgba(92,242,255,.25); transition: transform .12s, box-shadow .12s;
+  }
+  esp-web-install-button button[slot="activate"]:hover, .btn:hover { transform: translateY(-1px); box-shadow: 0 0 30px rgba(92,242,255,.45); }
+  .btn.ghost { background: transparent; color: var(--accent, var(--hud)); box-shadow: none; }
+  .unsupported, .not-allowed { color: var(--warn); font-size: 16px; }
+  .note { font-size: 15px; color: var(--dim); margin-top: 14px; }
+  .note b { color: var(--warn); font-weight: 600; }
+
+  .steps { counter-reset: s; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+  .step { background: var(--card); border: 1px solid #12323c; border-radius: 18px; padding: 18px 18px 16px; }
+  .step::before { counter-increment: s; content: '0' counter(s); font-family: 'Orbitron', sans-serif; color: var(--hud); font-size: 22px; display: block; margin-bottom: 6px; }
+  .step p { margin: 0; color: var(--dim); }
+  .step b { color: var(--text); }
+
+  details { background: var(--card); border: 1px solid #12323c; border-radius: 16px; padding: 14px 18px; margin: 10px 0; }
+  summary { cursor: pointer; font-weight: 700; font-size: 19px; list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+  summary::before { content: '+'; color: var(--hud); font-family: 'Orbitron', sans-serif; margin-right: 12px; }
+  details[open] summary::before { content: '\2013'; }
+  details p, details li { color: var(--dim); }
+  code, pre { font-family: 'Share Tech Mono', monospace; color: var(--sat); }
+  pre { background: #020a0e; border: 1px solid #12323c; border-radius: 12px; padding: 12px 14px; overflow-x: auto; font-size: 14px; }
+
+  table.sums { width: 100%; border-collapse: collapse; font-size: 13px; }
+  table.sums td { padding: 6px 8px; border-bottom: 1px solid #12323c; word-break: break-all; }
+  table.sums td:first-child { color: var(--text); white-space: nowrap; word-break: normal; }
+  table.sums td:last-child { color: var(--dim); }
+
+  .compat { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  .pill { border: 1px solid var(--hud-dim); border-radius: 20px; padding: 4px 14px; font-size: 14px; color: var(--dim); }
+  .pill.ok { border-color: var(--ok); color: var(--ok); }
+  .pill.no { border-color: var(--magenta); color: var(--magenta); }
+
+  footer { margin-top: 60px; text-align: center; color: var(--dim); font-size: 14px; }
+  footer .mono { font-size: 12px; }
+  .android { display: grid; grid-template-columns: minmax(280px, 1fr) minmax(280px, 1.3fr); gap: 20px; align-items: start; }
+  @media (max-width: 760px) { .android { grid-template-columns: 1fr; } }
+  .phones { display: flex; gap: 14px; overflow-x: auto; padding: 4px 4px 14px; scroll-snap-type: x mandatory; }
+  .phones img { height: 420px; flex: none; border-radius: 26px; scroll-snap-align: center; box-shadow: 0 0 0 6px #0b1a21, 0 0 0 7px #1d3a45, 0 14px 40px rgba(0,0,0,.6); margin: 8px 6px; background: #000; }
+  .install { counter-reset: i; list-style: none; padding: 0; margin: 14px 0 0; }
+  .install li { counter-increment: i; position: relative; padding: 0 0 10px 34px; font-size: 16px; }
+  .install li::before { content: counter(i); position: absolute; left: 0; top: 1px; width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--accent, var(--hud));
+    color: var(--accent, var(--hud)); font: 12px/22px 'Share Tech Mono', monospace; text-align: center; }
+  .apkmeta { font-size: 13px; color: var(--dim); margin-top: 10px; word-break: break-all; }
+  @media (max-width: 560px) { .shots img { height: 240px; } body { font-size: 17px; } }
+</style>
+</head>
+<body>
+<canvas id="stars"></canvas>
+<main>
+  <header>
+    <h1 class="logo"><img src="img/skypoint_logo.png" alt="SKYPOINT by SKIrF" width="360"></h1>
+    <div class="tag mono">POINT &middot; LOCK &middot; DISCOVER</div>
+    <p class="lede">Hold your watch up to the sky and it shows what's behind it: stars, constellations, planets, the Moon in its real phase, deep-sky objects, and the ISS on its way over. Now on Android phones too.</p>
+    <span class="ver mono">1.0 BETA 1</span>
+    <p style="margin-top:14px"><a class="btn ghost" href="docs/SkyPoint_Beta_1_User_Guide.pdf" target="_blank" rel="noopener">USER GUIDE (PDF)</a></p>
+  </header>
+
+  <div class="shots" aria-label="Screenshots">
+    <img src="img/01_sky_lock_planet.png" alt="Sky view locked on Saturn" loading="lazy">
+    <img src="img/05_sky_moon.png" alt="Sky view with the crescent Moon" loading="lazy">
+    <img src="img/04_sky_find_moon.png" alt="Find mode arrow" loading="lazy">
+    <img src="img/06_tonight.png" alt="Tonight page" loading="lazy">
+    <img src="img/07_orbit.png" alt="Orbit page with ISS pass" loading="lazy">
+    <img src="img/10_gps_locked.png" alt="GPS page" loading="lazy">
+    <img src="img/09_sky_night.png" alt="Night vision mode" loading="lazy">
+    <img src="img/12_keyboard.png" alt="Big-key keyboard" loading="lazy">
+  </div>
+
+  <h2>INSTALL<small>PLUG IN, CLICK, DONE. CHROME OR EDGE ON A COMPUTER.</small></h2>
+  <div class="boards">
+    <div class="board" style="--accent: var(--hud)">
+      <h3>LilyGO T-Watch Ultra</h3>
+      <div class="chip mono">ESP32-S3 &middot; GPS &middot; 16 MB</div>
+      <ul>
+        <li><b>BHI260AP</b> on-chip motion fusion</li>
+        <li><b>GPS</b> sets the time and position, with its own GPS page</li>
+        <li>Vibration, sounds, and Launcher support</li>
+      </ul>
+      <div class="actions">
+        <esp-web-install-button manifest="manifest_twatch_ultra.json">
+          <button slot="activate">INSTALL STANDALONE</button>
+          <span slot="unsupported" class="unsupported">This browser can't flash. Use Chrome or Edge on a computer.</span>
+          <span slot="not-allowed" class="not-allowed">Open this page over HTTPS to flash.</span>
+        </esp-web-install-button>
+        <a class="btn ghost" href="firmware/SkyPoint_TWatchUltra_Beta_1_Launcher.bin" download>LAUNCHER APP .BIN</a>
+      </div>
+      <p class="note"><b>Using Launcher?</b> Don't use Install, because it replaces Launcher. Download the <span class="mono">app .bin</span>, copy it to the SD card, and install it from Launcher.</p>
+    </div>
+
+    <div class="board" style="--accent: var(--sat)">
+      <h3>Waveshare C6 AMOLED 2.06</h3>
+      <div class="chip mono">ESP32-C6 &middot; WI-FI SYNC &middot; 4 MB</div>
+      <ul>
+        <li><b>QMI8658</b> with motion fusion in the firmware</li>
+        <li>Time and place come from a <b>Wi-Fi sync</b>, or pick a city</li>
+        <li>ES8311 speaker sounds, runs standalone</li>
+      </ul>
+      <div class="actions">
+        <esp-web-install-button manifest="manifest_waveshare_c6.json">
+          <button slot="activate">INSTALL</button>
+          <span slot="unsupported" class="unsupported">This browser can't flash. Use Chrome or Edge on a computer.</span>
+          <span slot="not-allowed" class="not-allowed">Open this page over HTTPS to flash.</span>
+        </esp-web-install-button>
+        <a class="btn ghost" href="firmware/SkyPoint_WaveshareC6_AMOLED206_Beta_1.bin" download>.BIN</a>
+      </div>
+      <p class="note"><b>First install or switching from another app?</b> Tick <span class="mono">Erase device</span> when the installer asks. If it won't connect, hold <span class="mono">BOOT</span> while you plug in the cable.</p>
+    </div>
+  </div>
+
+  <div class="compat">
+    <span class="pill ok">Chrome</span><span class="pill ok">Edge</span><span class="pill ok">Opera</span>
+    <span class="pill no">Firefox</span><span class="pill no">Safari</span><span class="pill no">Phones (for flashing)</span>
+  </div>
+
+  <h2 id="android">ANDROID<small>THE SAME SKY ON YOUR PHONE. NO WATCH NEEDED.</small></h2>
+  <div class="android">
+    <div class="board" style="--accent: var(--amber)">
+      <h3>SkyPoint for Android</h3>
+      <div class="chip mono">ANDROID 8+ &middot; APK &middot; <span id="apksize">1.1 MB</span></div>
+      <ul>
+        <li>Phone compass + gyro, <b>true north</b> corrected for your location</li>
+        <li><b>AR camera view</b>, pinch to zoom, tap anything to find it</li>
+        <li>Tonight, ISS / Tiangong / Hubble passes, GPS sky plot, sounds</li>
+        <li>Tap the card for an <b>info sheet</b>: rise and set times, distance, colour, orbit data, and the Wikipedia summary</li>
+        <li><b>Constellation art</b> (optional layer): drawings of the dippers, the zodiac, Orion and other famous figures over their stars</li>
+        <li><b>Layers</b> to show just stars, planets, satellites or deep sky, and <b>portrait, auto or landscape</b> rotation</li>
+      </ul>
+      <div class="actions">
+        <a class="btn" style="--accent: var(--amber)" href="android/SkyPoint_1.0_Beta_1.apk" download>DOWNLOAD APK</a>
+      </div>
+      <ol class="install">
+        <li>Open this page <b>on your phone</b> and tap Download APK.</li>
+        <li>Open the download. If asked, allow your browser to <b>install unknown apps</b>.</li>
+        <li>Play Protect may warn that it doesn't know the app. Tap <b>More details &rsaquo; Install anyway</b>.</li>
+        <li>Allow location (and camera if you want AR). Wave the phone in a figure-8 once to wake the compass.</li>
+      </ol>
+      <p class="apkmeta mono" id="apksum">SHA-256: see checksums below</p>
+    </div>
+    <div class="phones" aria-label="Android screenshots">
+      <img src="img/android_00_art_gemini.png" alt="Constellation art over Gemini and Auriga" loading="lazy">
+      <img src="img/android_00_art_orion.png" alt="Constellation art over Orion and Taurus" loading="lazy">
+      <img src="img/android_01_sky_orion.png" alt="Orion and Sirius in the sky view" loading="lazy">
+      <img src="img/android_02_sky_jupiter.png" alt="Locked on Mars next to Jupiter" loading="lazy">
+      <img src="img/android_03_find.png" alt="Find mode guiding to Saturn" loading="lazy">
+      <img src="img/android_04_info_iss.png" alt="Info sheet for the ISS" loading="lazy">
+      <img src="img/android_05_info_star.png" alt="Info sheet for Capella" loading="lazy">
+      <img src="img/android_10_layers.png" alt="Layers sheet" loading="lazy">
+      <img src="img/android_11_landscape.png" alt="Landscape sky view" loading="lazy">
+      <img src="img/android_06_tonight.png" alt="Tonight page" loading="lazy">
+      <img src="img/android_07_orbit.png" alt="Orbit page with ISS passes" loading="lazy">
+      <img src="img/android_08_location.png" alt="Location page with satellite plot" loading="lazy">
+      <img src="img/android_09_settings.png" alt="Settings" loading="lazy">
+    </div>
+  </div>
+
+  <h2>FIRST NIGHT OUT<small>FOUR STEPS TO A WORKING SKY</small></h2>
+  <div class="steps">
+    <div class="step"><p><b>Get time and place.</b> On the T-Watch, go outside until the GPS page says <b>LOCKED</b>. On the C6, use SETUP &rsaquo; Wi-Fi, then <b>Sync over Wi-Fi</b> (or pick a city).</p></div>
+    <div class="step"><p><b>Align north.</b> The watch knows which way is down but not which way is north. Long-press the sky, pick the Moon or a bright planet, centre it, and long-press again.</p></div>
+    <div class="step"><p><b>Look through it.</b> Hold the watch up like a window. Tap to zoom (90&deg; to 20&deg;). Aim at something and the reticle locks onto it with a card of details.</p></div>
+    <div class="step"><p><b>Hunt.</b> Swipe to TONIGHT or ORBIT and tap anything to start Find mode. An arrow and rising tones guide you to it.</p></div>
+  </div>
+
+  <h2>HELP<small>IF SOMETHING'S OFF</small></h2>
+  <details>
+    <summary>The sky turns the wrong way</summary>
+    <p>Step SETUP &rsaquo; <b>Sensor axis</b> through 0 / 90 / 180 / 270&deg; until moving the watch moves the sky correctly, then align north again.</p>
+  </details>
+  <details>
+    <summary>Positions are off to one side</summary>
+    <p>That's the heading. Re-align on something real: when the reticle is locked onto it and you're centred, long-press. The gyro drifts slowly, so re-aligning every half hour or so keeps it tight.</p>
+  </details>
+  <details>
+    <summary>ISS times look wrong</summary>
+    <p>Orbital elements go stale after about a week. The ORBIT page shows their age. Tap <b>UPDATE</b> (it needs Wi-Fi set up in SETUP).</p>
+  </details>
+  <details>
+    <summary>Android: the sky is off to one side or jumps around</summary>
+    <p>Phone compasses get pulled by cases with magnets, cars and steel. Wave the phone in a figure-8, then SETUP &rsaquo; <b>Align compass</b>: pick the Moon or a bright planet, centre it, tap <b>LOCK IT</b>. The yellow <span class="mono">CALIBRATE</span> chip shows when Android thinks the compass is unsure.</p>
+  </details>
+  <details>
+    <summary>Android: "App not installed"</summary>
+    <p>An older SkyPoint signed with a different key is in the way. Uninstall it first, then install again. Updates from this page install over each other.</p>
+  </details>
+  <details>
+    <summary>Flash from the command line instead</summary>
+<pre>esptool --chip esp32s3 write-flash 0x0 SkyPoint_TWatchUltra_Beta_1.bin
+esptool --chip esp32c6 write-flash 0x0 SkyPoint_WaveshareC6_AMOLED206_Beta_1.bin</pre>
+    <p>The C6 image is built for its 4 MB flash. Run <code>esptool --chip esp32c6 erase-flash</code> first if the board had something else on it.</p>
+  </details>
+  <details>
+    <summary>Checksums (SHA-256)</summary>
+    <table class="sums mono" id="sums"><tr><td colspan="2">Loading&hellip;</td></tr></table>
+  </details>
+
+  <footer>
+    <p>SkyPoint &middot; <a href="https://github.com/SKIrf26/SKYPOINT">github.com/SKIrf26/SKYPOINT</a> &middot; GPL-3.0 &middot; Stars: HYG database (CC BY-SA 4.0) &middot; Figures: Stellarium &middot; Orbits: CelesTrak &middot; Android: Astronomy Engine &amp; satellite.js (MIT), constellation art by Johan Meuris (Free Art License) &middot; Flashing by <a href="https://esphome.github.io/esp-web-tools/">ESP Web Tools</a></p>
+    <p class="mono">SKIRF LABS</p>
+  </footer>
+</main>
+
+<script>
+/* starfield with gentle twinkle and the occasional satellite */
+(() => {
+  const c = document.getElementById('stars'), x = c.getContext('2d');
+  let w, h, stars = [], sat = null, dpr = Math.min(2, window.devicePixelRatio || 1);
+  const cols = ['#9fd8ff', '#ffffff', '#fff1cc', '#ffd2a1', '#5cf2ff'];
+  function resize() {
+    w = c.width = innerWidth * dpr; h = c.height = innerHeight * dpr;
+    c.style.width = innerWidth + 'px'; c.style.height = innerHeight + 'px';
+    stars = Array.from({ length: Math.round(innerWidth * innerHeight / 3800) }, () => ({
+      x: Math.random() * w, y: Math.random() * h, r: (Math.random() ** 3 * 1.6 + .3) * dpr,
+      c: cols[(Math.random() * cols.length) | 0], p: Math.random() * 6.28, s: .5 + Math.random()
+    }));
+  }
+  function frame(t) {
+    x.clearRect(0, 0, w, h);
+    for (const s of stars) {
+      x.globalAlpha = .35 + .4 * (0.5 + 0.5 * Math.sin(t / 900 * s.s + s.p));
+      x.fillStyle = s.c; x.beginPath(); x.arc(s.x, s.y, s.r, 0, 6.283); x.fill();
+    }
+    if (!sat && Math.random() < .002) sat = { x: -20, y: Math.random() * h * .6, vx: (1.2 + Math.random()) * dpr, vy: (Math.random() - .3) * .5 * dpr };
+    if (sat) {
+      x.globalAlpha = .9; x.fillStyle = '#34f5c5';
+      x.beginPath(); x.arc(sat.x, sat.y, 1.8 * dpr, 0, 6.283); x.fill();
+      sat.x += sat.vx; sat.y += sat.vy; if (sat.x > w + 20) sat = null;
+    }
+    x.globalAlpha = 1;
+    requestAnimationFrame(frame);
+  }
+  addEventListener('resize', resize); resize();
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) requestAnimationFrame(frame);
+  else frame(0);
+})();
+
+/* checksums */
+fetch('firmware/SHA256SUMS.txt').then(r => r.text()).then(t => {
+  const rows = t.trim().split('\n').map(l => l.trim().split(/\s+/)).filter(p => p.length === 2);
+  document.getElementById('sums').innerHTML = rows.map(([h, f]) => `<tr><td>${f}</td><td>${h}</td></tr>`).join('');
+  const apk = rows.find(([, f]) => f.endsWith('.apk'));
+  if (apk) document.getElementById('apksum').textContent = 'SHA-256 ' + apk[0];
+}).catch(() => { document.getElementById('sums').innerHTML = '<tr><td colspan="2">See firmware/SHA256SUMS.txt</td></tr>'; });
+</script>
+</body>
+</html>

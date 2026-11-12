@@ -1,0 +1,23 @@
+name: Feature request
+description: An idea for SkyPoint
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you like?
+    validations:
+      required: true
+  - type: textarea
+    id: use
+    attributes:
+      label: How would you use it under the sky?
+  - type: dropdown
+    id: device
+    attributes:
+      label: For which version?
+      multiple: true
+      options:
+        - T-Watch Ultra
+        - Waveshare C6
+        - Android
