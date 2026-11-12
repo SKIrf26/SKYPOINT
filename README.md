@@ -1,6 +1,6 @@
 <div align="center">
 
-![SkyPoint by SKIrF](docs/images/banner.png)
+<p align="center"><img src="docs/images/skypoint_logo.png" alt="SKYPOINT by SKIrF" width="460"></p>
 
 **Point your watch (or your phone) at the sky and it tells you what you're looking at.**
 
